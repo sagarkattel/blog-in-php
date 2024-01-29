@@ -120,15 +120,15 @@ function listBlog($conn){
     return $blogs;
 }
 
-function createBlog($conn,$title,$description)
+function createBlog($conn,$title,$description,$created_by)
 {
-    $sql="INSERT INTO Blog(title,description) VALUES(?,?);";
+    $sql="INSERT INTO Blog(title,description,created_by) VALUES(?,?,?);";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../blogcreate.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"ss",$title,$description);
+    mysqli_stmt_bind_param($stmt,"sss",$title,$description,$created_by);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../blogs.php?error=blogcreated");
@@ -160,9 +160,7 @@ function updateblog($conn,$id,$title,$description)
 
 function deleteBlog($conn, $id){
     $sql = "DELETE FROM Blog WHERE id=?";
-
     $stmt = mysqli_stmt_init($conn);
-
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         return false;
     }

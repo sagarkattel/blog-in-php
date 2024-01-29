@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'includes/dbh.php';
 include_once 'includes/functions.php';
 
@@ -25,12 +26,16 @@ $ourblog = listBlog($conn);
             "<h2>" . "Title: " . "<a href='blogeach.php?id=" . $blog['id'] . "'>" . $blog['title'] . "</a>" . "<br>" .
             "Description: " . $blog['description'] . "</h2>" .
             "<br>" .
-            "<a href='blogedit.php?id=" . $blog['id'] . "'>" . "Edit" . "</a>" .
-            "<form method='post' action='$_SERVER[PHP_SELF]' onsubmit='return confirm(\"Are you sure?\");'>
-                <input type='hidden' name='id' value='" . $blog['id'] . "'>
-                <button type='submit'>Delete</button>
-             </form>" .
-            "</li>";
+            "Created By: " . $blog['created_by'] . "</h2>" .
+            "<br>";
+        echo ($blog['created_by'] == $_SESSION["useremail"]) ?
+            ("<a href='blogedit.php?id=" . $blog['id'] . "'>" . "Edit" . "</a>" .
+                "<form method='post' action='$_SERVER[PHP_SELF]' onsubmit='return confirm(\"Are you sure?\");'>
+            <input type='hidden' name='id' value='" . $blog['id'] . "'>
+            <button type='submit'>Delete</button>
+            </form>") :
+            "";
+        echo "</li>";
     }
     ?>
 </ul>
