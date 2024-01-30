@@ -20,22 +20,24 @@ $ourblog = listBlog($conn);
 <h1>Blogs are:</h1>
 <ul>
     <?php
-    echo "<input type='button' value='Create Blog' id='btnLogin' onclick='handleCreateBlog()' />";
+    echo "<input type='button' value='Create Blog' id='btnLogin' onclick='handleCreateBlog()' /><br><br>";
+
     foreach ($ourblog as $blog) {
         echo "<li>" .
-            "<h2>" . "Title: " . "<a href='blogeach.php?id=" . $blog['id'] . "'>" . $blog['title'] . "</a>" . "<br>" .
-            "Description: " . $blog['description'] . "</h2>" .
+             "Title: " . $blog['title'] . "<br>" .
+            "Description: " . $blog['description'] .
             "<br>" .
             "Created By: " . $blog['created_by'] . "</h2>" .
-            "<br>";
+            "<br>" .
+            "<a href='blogeach.php?id=" . $blog['id'] . "'>" . "Readmore" . "</a>";
         echo ($blog['created_by'] == $_SESSION["useremail"]) ?
-            ("<a href='blogedit.php?id=" . $blog['id'] . "'>" . "Edit" . "</a>" .
+            ("<br><a href='blogedit.php?id=" . $blog['id'] . "'>" . "Edit" . "</a>" .
                 "<form method='post' action='$_SERVER[PHP_SELF]' onsubmit='return confirm(\"Are you sure?\");'>
             <input type='hidden' name='id' value='" . $blog['id'] . "'>
             <button type='submit'>Delete</button>
             </form>") :
             "";
-        echo "</li>";
+        echo "</li><br><br>";
     }
     ?>
 </ul>

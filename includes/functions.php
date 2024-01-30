@@ -160,6 +160,16 @@ function updateblog($conn,$id,$title,$description)
 
 function deleteBlog($conn, $id){
     $sql = "DELETE FROM Blog WHERE id=?";
+    $sql2= "DELETE FROM Comment WHERE blog_id=?";
+
+    $stmt2=mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+        return false;
+    }
+    mysqli_stmt_bind_param($stmt2, "s", $id);
+    mysqli_stmt_execute($stmt2);
+    mysqli_stmt_close($stmt2);
+
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         return false;
@@ -170,6 +180,63 @@ function deleteBlog($conn, $id){
     return true;
 }
 
+function listComment($conn,$id)
+{
+    $sql="SELECT * FROM Comment WHERE blog_id=".$id.";";
+    $result=$conn->query($sql);
+    $blog=$result->fetch_all(MYSQLI_ASSOC);
+    return $blog;
+}
 
+function createComment($conn,$comment_title,$comment_email,$blog_id)
+{
+    $sql="INSERT INTO Comment (comment_title,comment_email,blog_id) VALUES (?,?,?)";
+    $stmt=mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        header("Location: ../blogcreate.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt,"sss",$comment_title,$comment_email,$blog_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function deleteComment($conn,$id)
+{
+    $sql2= "DELETE FROM Comment WHERE id=?";
+
+    $stmt2=mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+        return false;
+    }
+    mysqli_stmt_bind_param($stmt2, "s", $id);
+    mysqli_stmt_execute($stmt2);
+    mysqli_stmt_close($stmt2);
+    return true;
+
+}
+
+function listEachComment($conn,$id)
+{
+    $sql="SELECT * FROM Comment WHERE id=".$id.";";
+    $result=$conn->query($sql);
+    $blog=$result->fetch_all(MYSQLI_ASSOC);
+    return $blog;
+}
+
+function updateComment($conn,$id,$comment_title,$comment_email,$blog_id)
+{
+    $sql="UPDATE Comment SET comment_title=?,comment_email=?,blog_id=? WHERE id=?";
+    $stmt=mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        header("Location: ../blogedit.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt,"ssss",$comment_title,$comment_email,$blog_id,$id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: ../blogeach.php?id=".$blog_id);
+    exit();
+}
 
 

@@ -5,10 +5,12 @@ session_start();
 <html>
 <head>
     <title>Authentication System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 
 <body>
-<a href='blogs.php'>Blogs</a>
+<div class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 mt-8  lg:text-3xl">
+<a href='blogs.php' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Blogs</a>
 <?php
 if(isset($_SESSION["useremail"])){
     echo "<h3>Welcome, {$_SESSION["useremail"]}</h3>";
@@ -17,13 +19,13 @@ if(isset($_SESSION["useremail"])){
 //    echo "<br><br><a href='blogs.php'>Blogs</a>";
 }
 else{
-    echo "<input type='button' value='Login' id='btnLogin' onclick='redirectlogin()' />";
-    echo "<input type='button' value='Sign Up' id='btnLogin' onclick='redirectsignup()' />";
+    echo "<br><br><input type='button' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' value='Login' id='btnLogin' onclick='redirectlogin()' />";
+    echo "<br><br><input type='button' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' value='Sign Up' id='btnLogin' onclick='redirectsignup()' />";
 }
 ?>
 
 
-
+</div>
 </body>
 
 <script>
