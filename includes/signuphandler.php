@@ -2,15 +2,17 @@
 
 //global $conn;
 if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $name=htmlspecialchars($_POST["name"]);
     $email=htmlspecialchars($_POST["email"]);
     $password=htmlspecialchars($_POST["password"]);
     $confirm_password=htmlspecialchars($_POST["confirm_password"]);
+//    $role=htmlspecialchars($_POST["role"]);
 
 
     include_once  'dbh.php';
     include_once 'functions.php';
 
-    if(emptyInputSignup($email,$password,$confirm_password)!==false){
+    if(emptyInputSignup($name,$email,$password,$confirm_password)!==false){
         header("Location: ../register.php?error=emptyinput");
         exit();
     }
@@ -31,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         exit();
     }
 
-    createUser($conn,$email,$password);
+    createUser($conn,$name,$email,$password);
 
 
 }

@@ -22,6 +22,17 @@ function emptyInputLogin($email,$password){
     return $result;
 }
 
+function emptyComment($comment_title,$blog_id,$user_id){
+    $result;
+    if (empty($comment_title)||empty($blog_id)||empty($user_id)){
+        $result=true;
+    }
+    else{
+        $result=false;
+    }
+    return $result;
+}
+
 
 
 
@@ -69,15 +80,15 @@ function emailExists($conn,$email){
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn,$email,$password){
-    $sql="INSERT INTO User(email,password) VALUES(?,?);";
+function createUser($conn,$name,$email,$password){
+    $sql="INSERT INTO User(name,email,password) VALUES(?,?,?);";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../register.php?error=stmtfailed");
         exit();
     }
     $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt,"ss",$email,$hashedPwd);
+    mysqli_stmt_bind_param($stmt,"sss",$name,$email,$hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../login.php?error=usercreated");
@@ -101,9 +112,17 @@ function loginUser($conn,$email,$password){
     else if($checkPwd===true){
         session_start();
         $_SESSION["useremail"]=$emailExists["email"];
+        $_SESSION["id"]=$emailExists["id"];
         header("Location: ../index.php");
         exit();
     }
+}
+
+function listEachUser($conn,$id){
+    $sql="SELECT * FROM User WHERE id=".$id.";";
+    $result=$conn->query($sql);
+    $users=$result->fetch_all(MYSQLI_ASSOC);
+    return $users;
 }
 
 function listUser($conn){
@@ -120,15 +139,15 @@ function listBlog($conn){
     return $blogs;
 }
 
-function createBlog($conn,$title,$description,$created_by)
+function createBlog($conn,$title,$description,$user_id)
 {
-    $sql="INSERT INTO Blog(title,description,created_by) VALUES(?,?,?);";
+    $sql="INSERT INTO Blog(title,description,user_id) VALUES(?,?,?);";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../blogcreate.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"sss",$title,$description,$created_by);
+    mysqli_stmt_bind_param($stmt,"sss",$title,$description,$user_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../blogs.php?error=blogcreated");
@@ -143,15 +162,15 @@ function listEachBlog($conn,$id)
     return $blog;
 }
 
-function updateblog($conn,$id,$title,$description)
+function updateblog($conn,$id,$title,$description,$user_id)
 {
-    $sql="UPDATE Blog SET title=?,description=? WHERE id=?";
+    $sql="UPDATE Blog SET title=?,description=?,user_id=? WHERE id=?";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../blogedit.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"sss",$title,$description,$id);
+    mysqli_stmt_bind_param($stmt,"ssss",$title,$description,$user_id,$id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../blogs.php?error=blogupdated");
@@ -188,15 +207,15 @@ function listComment($conn,$id)
     return $blog;
 }
 
-function createComment($conn,$comment_title,$comment_email,$blog_id)
+function createComment($conn,$comment_title,$blog_id,$user_id)
 {
-    $sql="INSERT INTO Comment (comment_title,comment_email,blog_id) VALUES (?,?,?)";
+    $sql="INSERT INTO Comment (comment_title,blog_id,user_id) VALUES (?,?,?)";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../blogcreate.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"sss",$comment_title,$comment_email,$blog_id);
+    mysqli_stmt_bind_param($stmt,"sss",$comment_title,$blog_id,$user_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
@@ -224,15 +243,15 @@ function listEachComment($conn,$id)
     return $blog;
 }
 
-function updateComment($conn,$id,$comment_title,$comment_email,$blog_id)
+function updateComment($conn,$id,$comment_title,$blog_id)
 {
-    $sql="UPDATE Comment SET comment_title=?,comment_email=?,blog_id=? WHERE id=?";
+    $sql="UPDATE Comment SET comment_title=?,blog_id=? WHERE id=?";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("Location: ../blogedit.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"ssss",$comment_title,$comment_email,$blog_id,$id);
+    mysqli_stmt_bind_param($stmt,"sss",$comment_title,$blog_id,$id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../blogeach.php?id=".$blog_id);

@@ -23,7 +23,7 @@ if(isset($_GET["commentid"])) {
             <label for="title">Title:</label>
             <input type="text" name="comment_title" value="<?php echo $comment[0]['comment_title']; ?>" required><br>
 
-            <input type="hidden" name="comment_email" value="<?php echo $comment[0]['comment_email']; ?>">
+<!--            <input type="hidden" name="comment_email" value="--><?php //echo $comment[0]['comment_email']; ?><!--">-->
 
             <input type="hidden" name="blog_id" value="<?php echo $comment[0]['blog_id']; ?>">
 

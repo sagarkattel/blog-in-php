@@ -20,7 +20,7 @@ if(isset($_GET["id"])) {
         <h2>Edit Blog</h2>
         <form action="includes/updatebloghandler.php" method="post">
             <input type="hidden" name="id" value="<?php echo $blog[0]['id']; ?>">
-
+            <input type="hidden" name="user_id" value="<?php echo $blog[0]['user_id']; ?>">
             <label for="title">Title:</label>
             <input type="text" name="title" value="<?php echo $blog[0]['title']; ?>" required><br>
 

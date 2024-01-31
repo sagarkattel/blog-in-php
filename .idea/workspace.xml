@@ -7,10 +7,16 @@
     <list default="true" id="d196b24e-8712-48cc-812f-73e0b79306c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogeach.php" beforeDir="false" afterPath="$PROJECT_DIR$/blogeach.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/blogedit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogs.php" beforeDir="false" afterPath="$PROJECT_DIR$/blogs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/commentedit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/bloghandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/bloghandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/commenthandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/commenthandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/signuphandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/signuphandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/updatebloghandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/updatebloghandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/updatecommenthandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/updatecommenthandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cloco/Documents/PHP/blog/app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/cloco/Documents/PHP/blog/app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -64,7 +70,9 @@
       <updated>1706257082212</updated>
       <workItem from="1706257083254" duration="12180000" />
       <workItem from="1706501617745" duration="24421000" />
-      <workItem from="1706586633204" duration="17459000" />
+      <workItem from="1706586633204" duration="18595000" />
+      <workItem from="1706676830644" duration="15000" />
+      <workItem from="1706678100224" duration="12270000" />
     </task>
     <servers />
   </component>

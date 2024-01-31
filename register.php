@@ -10,6 +10,10 @@
 <form action="includes/signuphandler.php" method="post" class="mx-auto max-w-lg rounded-lg border">
     <div class="flex flex-col gap-4 p-4 md:p-8">
         <div>
+            <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Username</label>
+            <input name="name" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        </div>
+        <div>
             <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
             <input name="email" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
         </div>
@@ -23,8 +27,16 @@
             <input type="password" name="confirm_password" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
         </div>
 
+<!--        <div>-->
+<!--            <label for="Role" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Role</label>-->
+<!--            <input type="text" name="role" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />-->
+<!--        </div>-->
 
-    <input type="submit" name="submit" class="block rounded-lg bg-gray-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base">
+
+
+
+
+        <input type="submit" name="submit" class="block rounded-lg bg-gray-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base">
     </div>
 </form>
 </body>

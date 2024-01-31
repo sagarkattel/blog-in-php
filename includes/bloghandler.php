@@ -10,20 +10,21 @@ if (!isset($_SESSION['useremail'])) {
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $title=htmlspecialchars($_POST["title"]);
     $description=htmlspecialchars($_POST["description"]);
-    $created_by=htmlspecialchars($_SESSION['useremail']);
+//    $created_by=htmlspecialchars($_SESSION['useremail']);
+    $user_id=htmlspecialchars($_SESSION["id"]);
 
     include_once  'dbh.php';
     include_once 'functions.php';
 
     if(emptyInputLogin($title,$description)!==false){
-        header("Location: ../blog.php?error=emptyinput");
+        header("Location: ../blogcreate.php?error=emptyinput");
         exit();
     }
 
 
 
 
-    createBlog($conn,$title,$description,$created_by);
+    createBlog($conn,$title,$description,$user_id);
 
 
 }

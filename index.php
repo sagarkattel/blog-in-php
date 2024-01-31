@@ -13,9 +13,9 @@ session_start();
 <a href='blogs.php' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Blogs</a>
 <?php
 if(isset($_SESSION["useremail"])){
-    echo "<h3>Welcome, {$_SESSION["useremail"]}</h3>";
-    echo "<a href='includes/logouthandler.php'>Log out</a><br><br>";
-    echo "<a href='userpage.php'>View Users</a>";
+    echo "<h3>Welcome, {$_SESSION["useremail"]} and id {$_SESSION['id']}</h3>";
+    echo "<br><a href='includes/logouthandler.php' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Log out</a><br><br>";
+    echo "<a href='userpage.php' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>View Users</a>";
 //    echo "<br><br><a href='blogs.php'>Blogs</a>";
 }
 else{
